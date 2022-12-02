@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setMessage } from '../features/messageSlice';
 import { selectUser } from '../features/userSlice';
-
+import {customerServiceImage} from '../utils/data'
 
 function Message({id, email, message, name, photoUrl, status, feedback, timestamp, setShowChatBox}) {
   const user = useSelector(selectUser)
@@ -48,7 +48,7 @@ function Message({id, email, message, name, photoUrl, status, feedback, timestam
         {
                 feedback !== '' &&
             <div className='cursor-pointer flex items-center gap-8  hover:shadow-md p-2 border-b hover:bg-gray-100'>
-            <img src={''} className='cursor-pointer w-10 h-10 object-cover rounded-md '/>
+            <img src={customerServiceImage} className='cursor-pointer w-10 h-10 object-cover rounded-md '/>
             <div className='cursor-pointer flex-1' >
                 <div className='cursor-pointer flex items-center justify-between '>
             

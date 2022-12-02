@@ -36,7 +36,7 @@ function Book({setShowBook, selector}) {
   const handleReservation = () => {
     var timestamp = firebase.firestore.FieldValue.serverTimestamp();
     var date = new Date().toJSON().slice(0,10);
-   
+    if(time === '' || phone === '') return window.alert('Please fill out all the fields')
     db.collection('reservation').doc(date).collection(user?.email).add({
         destination: destination,
         pickup: pickup,
@@ -46,8 +46,9 @@ function Book({setShowBook, selector}) {
         email: user?.email,
         timestamp: timestamp
     })
+    
     setShowBook(false);   
-
+    return alert('Thank you. Your seat reservation is successfull')
   }
 
   

@@ -105,6 +105,17 @@ function Home() {
                   </>
                   
                 }
+                                {
+                  user?.email === 'driver@gmail.com'
+                  &&
+                  <>
+                    <Routes>
+                    <Route path="/*" element={<DriverPanel  />} />  
+                    <Route path="/feedback" element={<Feedback user={user} />} />
+                  </Routes>
+                  </>
+                  
+                }
                 {/* {
                   status.driver
                   &&
@@ -116,7 +127,7 @@ function Home() {
                   </div>
                 } */}
                 {
-                  user?.email !== 'customerservice@gmail.com'
+                  (user?.email !== 'customerservice@gmail.com' && user?.email !== 'driver@gmail.com')
                   &&
                   <>
                     <Routes>

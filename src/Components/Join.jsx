@@ -5,13 +5,14 @@ import {MdOutlineCancelPresentation} from 'react-icons/md'
 import { useDispatch } from 'react-redux';
 import { auth, provider } from '../utils/firebase';
 import { login } from '../features/userSlice';
-
+import {driverImage, customerServiceImage} from '../utils/data'
 
 
 function Join() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  let image = '';
 //   const [userName, setUserName] = useState('');
   
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function Join() {
     if(!email || !password ){
         return alert("Please enter a full name");
     }
+
+    if(email === 'customerservice@gmail.com') image =  customerServiceImage
+    if(email === 'driver@gmail.com') image = driverImage
     
     auth.signInWithEmailAndPassword(email, password)
     .then(userAuth => {
@@ -27,8 +31,8 @@ function Join() {
         {
           email: userAuth.user.email,
           password: userAuth.user.password,
-          displayName: userAuth.user.displayName || '',
-          photoURL: userAuth.user.photoURL || ''
+          displayName:  '',
+          photoURL: image
         }
       ))
       navigate('/')
@@ -56,6 +60,7 @@ function Join() {
     auth.signInWithPopup(provider)
     .then(user => 
         {
+        //   console.log(user.email)
         // if(user?.email?.slice(8, 17) !== "iub.edu.bd"){
         //   return alert('You are not authorized to login')
         // }

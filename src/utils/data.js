@@ -26,3 +26,6 @@ export const schedules = [
     }
 
 ]
+
+export const driverImage = 'https://cdn-icons-png.flaticon.com/128/2684/2684218.png?fbclid=IwAR0nWqh4L58G90Ub_aYOoOmnzHjYQc66Rlme4xo_4ZAZEqtpgmeGVo-XFVs'
+export const customerServiceImage = 'https://cdn-icons-png.flaticon.com/128/3017/3017252.png?fbclid=IwAR3u4Xy8nV_nNWznXlumxRnKcbsFzcqSXynf404zme6-Nkrpc5QVbDsYC9w'

@@ -40,7 +40,7 @@ function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}
                 <GiBus fontSize={30} className='hover:text-green-500 text-white' />
             </div>
             <div>
-                <h2 className='text-white font-extrabold text-lg'>SHUTTLE</h2>
+                <h2 className='text-white font-extrabold text-lg'>IUB SHUTTLE SERVICE</h2>
             </div>
             
         </div>
@@ -55,7 +55,8 @@ function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}
         <div className='flex gap-8 items-center justify-between'>
             <div className='cursor-pointer'
             onClick={()=> setShowBox(true)}>
-                <CiSquareQuestion fontSize={24} color='white'  />                
+
+                <CiSquareQuestion fontSize={28} color='white'  />                
             </div>
             {!user && 
             
@@ -66,7 +67,7 @@ function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}
 
             <div className='cursor-pointer'>
                 {
-                    user ? <img src={user?.photoUrl} onClick={signOut} className='rounded-full cursor-pointer ml-2 h-10' alt="hi" />
+                    user ? <img src={user?.photoURL } onClick={signOut} className='rounded-full cursor-pointer ml-2 h-10' alt="hi" />
                          : <BsFillPersonFill onClick={()=> navigate('/join')} color='white' className=' bg-gray-700 p-1 rounded-md' fontSize={26}/>
                 }
                 

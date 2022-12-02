@@ -27,28 +27,32 @@ function Sidebar({sidebar, setSidebar, show, status}) {
         </NavLink>
     
         {            
-            user?.email !== 'customerservice@gmail.com'     &&    
-             
-            <>  <NavLink 
+            (user?.email !== 'customerservice@gmail.com' && user?.email !== 'driver@gmail.com' )    &&    
+ 
+             <NavLink 
             to={'/reservation'}
             onClick={()=> setSidebar(false)}
             className={`${activeBtn['*'] === 'reservation' ? activeBtnStyles : notActiveBtnStyles}`}>
                 <IoOptionsOutline fontSize={24} className={`${activeBtn['*'] === 'reservation' ? 'ml-6 text-green-500' : 'ml-6 text-white' }`}/>
                 <p className='cursor-pointer text-white  absolute left-20  text-sm font-light' >Reservation</p>
             </NavLink>
+       
+        }
 
+
+        {
+            user?.email !== 'customerservice@gmail.com'     &&    
             <NavLink 
             to={'/feedback'}
             onClick={()=> setSidebar(false)}
             className={`${activeBtn['*'] === 'feedback' ? activeBtnStyles : notActiveBtnStyles}`}>
                 <RiFeedbackLine fontSize={24} className={`${activeBtn['*'] === 'feedback' ? 'ml-6 text-green-500' : 'ml-6 text-white' }`}/>
                 <p className='cursor-pointer text-white  absolute left-20  text-sm font-light' >Feedback</p>
-            
             </NavLink>
-            </>
+
         }
 
-{            
+        {            
             user?.email === 'customerservice@gmail.com'     &&    
              
             <>  <NavLink 
