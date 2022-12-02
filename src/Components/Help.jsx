@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
 import { db } from '../utils/firebase';
 import firebase from 'firebase/compat/app';
+import { toast } from 'react-toastify';
 
 function Help({setShowBox}) {
   const [query, setQuery] = useState('');
@@ -22,8 +23,11 @@ function Help({setShowBox}) {
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
         setQuery('');
-         }
+        toast.success('Message sent')
         setShowBox(false)
+         }
+        
+        
   }
   return (
     

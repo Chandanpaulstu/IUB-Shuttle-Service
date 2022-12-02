@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react'
-
+import ReactTimeago from 'react-timeago';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
 import { setMessage } from '../features/messageSlice';
 import { selectUser } from '../features/userSlice';
-
+import {driverImage} from '../utils/data'
 
 function Message({id, email, message, name, photoUrl, status, feedback, timestamp, setShowChatBox}) {
   const user = useSelector(selectUser)
@@ -30,13 +30,13 @@ function Message({id, email, message, name, photoUrl, status, feedback, timestam
         setShowChatBox(true)
 
       }}} className={feedback !== '' ? `${replied}` : `${notReplied}`}>
-            <img src={photoUrl} className='cursor-pointer w-10 h-10 object-cover rounded-md '/>
+            <img src={email === 'driver@gmail.com' ? driverImage : photoUrl} className='cursor-pointer w-10 h-10 object-cover rounded-md '/>
             <div className='cursor-pointer flex-1' >
                 <div className='cursor-pointer flex items-center justify-between '>
             
                     <h4 className='font-light'>{email}</h4>
                     <p className='cursor-pointer font-light text-xs'>
-                        {new Date(timestamp?.toDate()).toUTCString()}
+                    <ReactTimeago date={new Date(timestamp?.toDate()).toUTCString()} /> 
                     </p>
                     
                 </div >
@@ -53,46 +53,3 @@ function Message({id, email, message, name, photoUrl, status, feedback, timestam
 
 export default Message
 
-
-const MessageContainer = styled.div`
-  width: 100% !important;
-  display: flex;
-  padding-left:10px !important ;
-  margin: 20px 0 !important;
-  
-  
-    :hover{
-       
-        background-color: rgba(65,65, 65, .6);
-    }
-    
-`;
-
-
-const MessageInfo = styled.div`
-   
-`
-
-const MessageBody = styled.div`
-   >p{
-    color: gray;
-    font-weight: 500;
-    padding-bottom: 5px !important;
-   }
-`
-const MessagHeader = styled.div`
-     color: whitesmoke !important;
-     display: flex;
-     align-items: baseline;
-     margin-top: 5px !important;
-     h4{
-        font-size: 18px;
-     }
-     
-     
-     > .timestamp{
-        font-size: 12px;
-        color: lightgray;
-        margin-left: 10px !important;
-     }
-`;

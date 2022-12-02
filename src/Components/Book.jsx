@@ -5,6 +5,7 @@ import { db } from '../utils/firebase';
 import firebase from 'firebase/compat/app';
 import { selectUser } from '../features/userSlice';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 function Book({setShowBook, selector}) {
@@ -36,7 +37,7 @@ function Book({setShowBook, selector}) {
   const handleReservation = () => {
     var timestamp = firebase.firestore.FieldValue.serverTimestamp();
     var date = new Date().toJSON().slice(0,10);
-    if(time === '' || phone === '') return window.alert('Please fill out all the fields')
+    if(time === '' || phone === '') return toast.error('Please fill out all the fields')
     db.collection('reservation').doc(date).collection(user?.email).add({
         destination: destination,
         pickup: pickup,
@@ -47,8 +48,9 @@ function Book({setShowBook, selector}) {
         timestamp: timestamp
     })
     
-    setShowBook(false);   
-    return alert('Thank you. Your seat reservation is successfull')
+    setShowBook(false);  
+    toast.success('Thank you. Your seat reservation is successfull'); 
+    
   }
 
   

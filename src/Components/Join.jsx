@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { auth, provider } from '../utils/firebase';
 import { login } from '../features/userSlice';
 import {driverImage, customerServiceImage} from '../utils/data'
+import { toast } from 'react-toastify';
 
 
 function Join() {
@@ -19,7 +20,7 @@ function Join() {
 
   const singInByJoin = ()=>{
     if(!email || !password ){
-        return alert("Please enter a full name");
+      toast.error("Please fillout all the fields");
     }
 
     // if(email === 'customerservice@gmail.com') image =  customerServiceImage
@@ -32,27 +33,12 @@ function Join() {
           email: userAuth.user.email,
           password: userAuth.user.password,
           displayName:  '',
-          photoUrl: customerServiceImage
+          photoUrl: ''
         }
       ))
       navigate('/')
     }).catch(error => alert(error))
 
-    // auth.createUserWithEmailAndPassword(email, password)
-    //   .then((userAuth) => { userAuth.user.updateProfile({
-    //       displayName: userName,
-    //       photoURL: '',
-    //   })
-    //   .then(() => {
-    //     dispatch(login({
-    //       email: userAuth.user.email,
-    //       uid: userAuth.user.uid,
-    //       displayName: userName,
-    //       photoURL: ''
-    //     }));
-    //   });
-
-    //   }).catch(error => {alert(error)} )
   }
 
   const signInWithGoogle = () => {
@@ -62,7 +48,7 @@ function Join() {
         {
           
         //  if(user?.user.email?.slice(7, 18) !== "@iub.edu.bd"){
-        //    return alert('You are not authorized to login')
+        //    toast.error('You are not authorized to login');
         //   }
         dispatch(login(
           {
@@ -73,7 +59,7 @@ function Join() {
           }
         ))
         navigate('/');
-      }).catch(error => alert(error))
+      }).catch(error => toast.error(error))
   };
   
   return (
@@ -95,14 +81,6 @@ function Join() {
                             className='cursor-pointer w-full  placeholder:text-slate-400 placeholder:font-light    font-light text-sm  outline-none' />
                         </div>
                     </div>
-
-                    {/* <div>
-                        <label className='text-xs font-semibold'>Pick a Username</label>
-                        <div style={{border: '1px solid lightgrey'}} className=' hover:border-gray-700 flex flex-col  p-2 rounded-sm'>
-                            <input type="text" onChange={(e) => setUserName(e.target.value)}
-                            className='cursor-pointer w-full  placeholder:text-slate-400 placeholder:font-light    font-light text-sm  outline-none' />
-                        </div>
-                    </div> */}
                     
                     <div>
                         <label className='text-xs font-semibold'>Choose a password</label>

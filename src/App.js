@@ -5,13 +5,15 @@ import {
   Routes
 } from "react-router-dom";
 import Join from "./Components/Join";
-import Login from "./Components/Login";
+
 import Home from "./Container/Home";
 import { login, logout, selectUser } from "./features/userSlice";
 import { auth } from "./utils/firebase";
+import { ToastContainer } from "react-toastify"; 
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-
+  
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
@@ -37,6 +39,19 @@ function App() {
             <Route path='/join' element={<Join />} />
             <Route path='/*' element={<Home />} />
       </Routes>
+      <ToastContainer 
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="colored"
+      />
+    
     </div>
   );
 }

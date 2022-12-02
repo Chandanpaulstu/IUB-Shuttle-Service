@@ -5,6 +5,7 @@ import { selectUser } from '../features/userSlice';
 import { db } from '../utils/firebase';
 import firebase from 'firebase/compat/app';
 import { selectMessage } from '../features/messageSlice';
+import { toast } from 'react-toastify';
 
 function Chatbox({setShowChatBox}) {
   const [query, setQuery] = useState('');
@@ -18,6 +19,7 @@ function Chatbox({setShowChatBox}) {
     if(query){
         const docItem = db.collection('help').doc(id).update({feedback: query})
         }
+        toast.success("Message sent")
         setShowChatBox(false)
   }
   return (

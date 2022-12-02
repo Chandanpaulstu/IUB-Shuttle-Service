@@ -12,6 +12,7 @@ import { auth } from '../utils/firebase';
 import {CiSquareQuestion} from 'react-icons/ci'
 import {customerServiceImage} from '../utils/data'
 import {driverImage} from '../utils/data'
+import { toast } from 'react-toastify';
 
 function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}) {
     const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}
       dispatch(logout());
       auth.signOut();
       navigate('/join')
+      toast.success('Logged out successfully')
 
     }  
 
@@ -66,10 +68,13 @@ function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}
                 <FiSearch fontSize={22} color='white' />
             </div>
         <div className='flex gap-8 items-center justify-between'>
-            <div className='cursor-pointer'
+            <div className='cursor-pointer '
             onClick={()=> setShowBox(true)}>
-
-                <CiSquareQuestion fontSize={28} color='white'  />                
+                {
+                   (user && user?.email !== 'customerservice@gmail.com') &&
+                    <CiSquareQuestion fontSize={28} className='text-white hover:text-green-500'  /> 
+                }
+                               
             </div>
             {!user && 
             
@@ -80,27 +85,18 @@ function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}
 
             <div className='cursor-pointer'>
                 {
-                    user ? <img src={user?.photoUrl} onClick={signOut} className='rounded-full cursor-pointer ml-2 h-10' alt='profile' />
-                         : <BsFillPersonFill onClick={()=> navigate('/join')} color='white' className=' bg-gray-700 p-1 rounded-md' fontSize={26}/>
+                    (user &&  user?.email !== 'customerservice@gmail.com' &&
+                    user?.email !== 'driver@gmail.com') && <img src={user?.photoUrl} onClick={signOut} className='rounded-full cursor-pointer ml-2 h-10' alt='profile' />
+                        
                 }
                 
             </div>
-            {/* <div onMouseEnter={()=> setHover(true) } 
-                 onMouseLeave={()=> setHover(false) }
-                  className='h-16   items-center justify-center md:flex hidden'>
-                <p style={{ background: 'linear-gradient(112deg,#4cddbd,#06f286)'}} className='py-2 px-6 rounded-sm font-semibold cursor-pointer'>+ Submit</p>
-            </div> */}
 
-            {/* {
-                hover && <div onMouseEnter={()=> setHover(true) } onMouseLeave={()=> setHover(false) } className='w-40 flex shadow-lg flex-col items-center justify-center absolute right-5 top-16 bg-slate-50'>
-                    <NavLink to={'/create'} className='font-light py-3 w-full text-center  text-base hover:bg-green-200'>
-                        <p>Deviation</p>
-                    </NavLink>
-                    <NavLink to={'/'} onClick={showPost} className='font-light py-3 w-full text-center curs  text-base hover:bg-green-200'>
-                        <p >Status update</p>
-                    </NavLink>
-                </div>
-            } */}
+            {
+                user?.email === 'customerservice@gmail.com' && <img src={customerServiceImage} onClick={signOut} className='rounded-full cursor-pointer ml-2 h-10' alt='profile' />
+            }{    user?.email === 'driver@gmail.com' &&  <img src={driverImage} onClick={signOut} className='rounded-full cursor-pointer ml-2 h-10' alt='profile' />
+
+            }
             
         </div>
     </div>

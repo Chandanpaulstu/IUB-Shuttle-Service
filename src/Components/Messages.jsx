@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../utils/firebase';
 import Message from './Message';
+import Spinner from './Spinner';
 
 function Messages({setShowChatBox}) {
 
     const [messages, setMessages] = useState([]);
+    const [loading, setLoading] = useState(false);
   useEffect(
     () => {
+        setLoading(true)
         db.collection('help')
         .orderBy('timestamp', 'desc' )
         .onSnapshot(snapshot => 
@@ -18,8 +21,9 @@ function Messages({setShowChatBox}) {
                     }
                 )))
             ))
-        
+        setLoading(false)
     },[])
+    if(loading) return <Spinner message='Loading' />
   return (
     <div className='bg-white w-2/3 h-full p-6 shadow-lg'>
         <div>

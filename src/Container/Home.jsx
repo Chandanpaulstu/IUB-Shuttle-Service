@@ -7,8 +7,7 @@ import CustomerServicePanel from '../Components/CustomerServicePanel';
 import DriverPanel from '../Components/DriverPanel';
 import Help from '../Components/Help';
 import Feedback from '../Components/Feedback';
-// import Feed from '../Components/Feed';
-// import Footer from '../Components/Footer';
+
 import Navbar from '../Components/Navbar'
 import Reservation from '../Components/Reservation';
 import Sidebar from '../Components/Sidebar'
@@ -23,7 +22,7 @@ function Home() {
   const navigate = useNavigate();
   const selector = useSelector(selectRoute);
   const [sidebar, setSidebar] = useState(false);
-  const [activeBtn, setActiveBtn] = useState('deviations');
+
   const [show, setShow] = useState('');
   const [showBook, setShowBook] = useState(false);
   const [showbox, setShowBox] = useState(false);
@@ -39,28 +38,7 @@ function Home() {
     customerservice:false,
     driver: false
   })
-  // useEffect(()=>{
-    
-  //   if(user?.email === 'customerservice@gmail.com' )  {setStatus({...status, customerservice: true}) 
-  //                                                     }
-  //   if(user?.email === 'driver@gmail.com' )  {setStatus({...status, driver: true})}
-  //   else{
-  //      if(user){
-  //       setStatus({...status, student: true})
-  //      }
-     
-  //   }
-  //   console.log(status)
-  // },[navigate])
-  // useEffect(()=> {
-  //   if(param['*'] === '' || param['*'] === 'posts' ||param['*'] === 'categories' ){
-  //     setShow(true);
-  //   }
-  //   else{
-  //     setShow(false)
-  //   }
-  //   console.log(showPopup)
-  // },[param, showPopup])
+  
   useEffect(()=> {
     console.log(showbox)
   },[showbox])
@@ -93,16 +71,18 @@ function Home() {
           </div>
 
           {/* main */}
-            <div style={{minHeight: 'calc(100vh - 4rem)'}}  className='absolute left-0 right-0 min-w-screen  flex items-center justify-center'>
+            <div style={{minHeight: 'calc(100vh - 4rem)'}}  className='absolute left-0 right-0 min-w-screen   flex items-center justify-center'>
                 {
-                  user?.email === 'customerservice@gmail.com'
+                ( user && user?.email === 'customerservice@gmail.com')
                   &&
-                  <>
-                    <Routes>
-                    <Route path="/*" element={<CustomerServicePanel  />} />  
+                  
+                    (<Routes>
+                    <Route path="/*" element={<CustomerServicePanel   />} />  
                     <Route path="/messages" element={<Messages setShowChatBox={setShowChatBox}  />} />  
-                  </Routes>
-                  </>
+                  </Routes>)
+                  
+                  
+                  
                   
                 }
                                 {
@@ -118,7 +98,7 @@ function Home() {
                 }
                 
                 {
-                  (user?.email !== 'customerservice@gmail.com' && user?.email !== 'driver@gmail.com')
+                  (user && user?.email !== 'customerservice@gmail.com' && user?.email !== 'driver@gmail.com')
                   &&
                   <>
                     <Routes>
@@ -131,9 +111,13 @@ function Home() {
                 }   
 
             </div>
-
+            
+            
             
 
+        </div>
+        <div className='h-10 flex items-center justify-center text-xs font-bold w-full -z-10 bg-gray-900 opacity-30 fixed bottom-0' >
+              <p className='text-white '> © All right reserved. Developed by Maisha & Chandan</p>
         </div>
 
         

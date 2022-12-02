@@ -5,6 +5,8 @@ import {MdOutlineCancel} from 'react-icons/md'
 import { selectUser } from '../features/userSlice';
 import { useSelector } from 'react-redux';
 import { Timestamp } from 'firebase/firestore';
+import Spinner from './Spinner';
+import { toast } from 'react-toastify';
 
 function Reservation() {
    const [reservation, setReservation] = useState([]);
@@ -20,7 +22,6 @@ function Reservation() {
       const docItem = db.collection('reservation')
       .doc(date)
       .collection(user?.email).doc(id).id
-      console.log(docItem)
       // .doc(id).delete()
       // .then(() => {
       //   console.log("Document successfully deleted!")})
@@ -28,7 +29,7 @@ function Reservation() {
       //     console.error("Error removing document: ", error);
       // });
     }  
-
+    if(loading) return <Spinner message='We are adding new ideas to your feed!' />
 
   return (
     <div className='bg-white w-2/3 h-full p-6 shadow-lg'>
@@ -86,9 +87,9 @@ function Reservation() {
                       .doc(date)
                       .collection(user?.email).doc(doc?.id).delete()
                       .then(() => {
-                           window.alert("Delete successfully")})
+                           toast.success('Delete Successfully')})
                           .catch((error) => {
-                          console.error("Error removing document: ", error);
+                            toast.success(error)
                          });
                       
                     }}  className='hover:text-green-500'  fontSize={24} />
