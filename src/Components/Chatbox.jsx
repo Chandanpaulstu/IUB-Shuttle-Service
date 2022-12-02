@@ -6,6 +6,7 @@ import { db } from '../utils/firebase';
 import firebase from 'firebase/compat/app';
 import { selectMessage } from '../features/messageSlice';
 import { toast } from 'react-toastify';
+import {driverImage} from '../utils/data';
 
 function Chatbox({setShowChatBox}) {
   const [query, setQuery] = useState('');
@@ -32,7 +33,7 @@ function Chatbox({setShowChatBox}) {
             </div>
             <div className=' flex flex-col items-center gap-4 justify-center w-full  p-4'>
             <div className='cursor-pointer flex items-center gap-4  py-2 border-b '>
-            <img src={photoUrl} className='cursor-pointer w-10 h-10 object-cover rounded-md '/>
+            <img src={email === 'driver@gmail.com' ? driverImage : photoUrl} className='cursor-pointer w-10 h-10 object-cover rounded-md '/>
             <div className='cursor-pointer flex-1' >
                 <div className='cursor-pointer flex items-center justify-between '>
             

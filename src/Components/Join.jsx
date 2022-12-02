@@ -47,9 +47,9 @@ function Join() {
     .then(user => 
         {
           
-        //  if(user?.user.email?.slice(7, 18) !== "@iub.edu.bd"){
-        //    toast.error('You are not authorized to login');
-        //   }
+          if(user?.user.email?.slice(7, 18) !== "@iub.edu.bd"){
+          return toast.error('You are not authorized to login');
+          }
         dispatch(login(
           {
             id: user?.uid,

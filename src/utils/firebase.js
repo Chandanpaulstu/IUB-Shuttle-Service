@@ -3,14 +3,15 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCvbsmh6LOhxNq6LLJGYZHtCSehiUjVsIQ",
-  authDomain: "shuttle-service-6e48d.firebaseapp.com",
-  projectId: "shuttle-service-6e48d",
-  storageBucket: "shuttle-service-6e48d.appspot.com",
-  messagingSenderId: "538803631458",
-  appId: "1:538803631458:web:995f9b66e9969d864e283b",
-  measurementId: "G-W7BHWC4QYK"
+  apiKey: "AIzaSyApOiOdFXY0uDcGdFg0S1VbBQJi4BsbRnw",
+  authDomain: "iub-shuttle-service.firebaseapp.com",
+  projectId: "iub-shuttle-service",
+  storageBucket: "iub-shuttle-service.appspot.com",
+  messagingSenderId: "1032577420384",
+  appId: "1:1032577420384:web:dab633ea024599a04a4705",
+  measurementId: "G-1M2QDE3CGZ"
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
