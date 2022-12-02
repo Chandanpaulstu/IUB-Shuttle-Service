@@ -10,8 +10,9 @@ function Chatbox({setShowChatBox}) {
   const [query, setQuery] = useState('');
   const user = useSelector(selectUser);
   const chatItem = useSelector(selectMessage);
+  console.log(chatItem)
   const {id, email, message, name, photoUrl, status, timestamp} = chatItem;
- 
+  
   const handleReply = () =>{
 
     if(query){

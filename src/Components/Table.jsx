@@ -6,9 +6,9 @@ function Table({setShowBook}) {
   const dispatch = useDispatch();
 
 
-  useEffect(()=>{
-    dispatch(resetRoute(null))
-  },[])
+//   useEffect(()=>{
+//     dispatch(resetRoute(null))
+//   },[])
 
   return (
    <div>

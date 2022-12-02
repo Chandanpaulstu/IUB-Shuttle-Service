@@ -12,9 +12,9 @@ function Join() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  let image = '';
-//   const [userName, setUserName] = useState('');
   
+//   const [userName, setUserName] = useState('');
+
   const dispatch = useDispatch();
 
   const singInByJoin = ()=>{
@@ -22,8 +22,8 @@ function Join() {
         return alert("Please enter a full name");
     }
 
-    if(email === 'customerservice@gmail.com') image =  customerServiceImage
-    if(email === 'driver@gmail.com') image = driverImage
+    // if(email === 'customerservice@gmail.com') image =  customerServiceImage
+    // if(email === 'driver@gmail.com') image = driverImage
     
     auth.signInWithEmailAndPassword(email, password)
     .then(userAuth => {
@@ -32,7 +32,7 @@ function Join() {
           email: userAuth.user.email,
           password: userAuth.user.password,
           displayName:  '',
-          photoURL: image
+          photoUrl: customerServiceImage
         }
       ))
       navigate('/')
@@ -60,16 +60,16 @@ function Join() {
     auth.signInWithPopup(provider)
     .then(user => 
         {
-        //   console.log(user.email)
-        // if(user?.email?.slice(8, 17) !== "iub.edu.bd"){
-        //   return alert('You are not authorized to login')
-        // }
+          
+        //  if(user?.user.email?.slice(7, 18) !== "@iub.edu.bd"){
+        //    return alert('You are not authorized to login')
+        //   }
         dispatch(login(
           {
             id: user?.uid,
             email: user.email,
             displayName: user.displayName,
-            photoURL: user.photoURL
+            photoUrl: user.photoURL
           }
         ))
         navigate('/');

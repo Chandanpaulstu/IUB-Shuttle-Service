@@ -22,7 +22,7 @@ function Message({id, email, message, name, photoUrl, status, feedback, timestam
           email: email,
           message: message,
           name: name,
-          photoURL: photoUrl,
+          photoUrl: photoUrl,
           status: status,
           feedback: feedback,
           timestamp: timestamp,

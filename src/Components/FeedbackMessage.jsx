@@ -14,21 +14,21 @@ function Message({id, email, message, name, photoUrl, status, feedback, timestam
   
   return (
     
-        <div onClick={() => {
-      if(feedback === ''){
-        dispatch(setMessage({
-          id: id,
-          email: email,
-          message: message,
-          name: name,
-          photoUrl: photoUrl,
-          status: status,
-          feedback: feedback,
-          timestamp: timestamp,
-        }))
-        setShowChatBox(true)
-
-      }}} className='flex flex-col'>
+        <div 
+    //      onClick={() => {
+    //   if(feedback === ''){
+    //     dispatch(setMessage({
+    //       id: id,
+    //       email: email,
+    //       message: message,
+    //       name: name,
+    //       photoUrl: photoUrl,
+    //       status: status,
+    //       feedback: feedback,
+    //       timestamp: timestamp,
+    //     }))
+    //     setShowChatBox(true)}}} 
+      className='flex flex-col'>
         <div className='cursor-pointer flex flex-row-reverse items-center gap-8  hover:shadow-md p-2 border-b hover:bg-gray-100'>
             <img src={photoUrl} className='cursor-pointer w-10 h-10 object-cover rounded-md '/>
             <div className='cursor-pointer flex-1' >

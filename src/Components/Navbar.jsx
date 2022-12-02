@@ -10,9 +10,22 @@ import { logout, selectUser } from '../features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../utils/firebase';
 import {CiSquareQuestion} from 'react-icons/ci'
+import {customerServiceImage} from '../utils/data'
+import {driverImage} from '../utils/data'
+
 function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    // const [profile, setProfile] = useState('');
+    // if(user?.photoUrl !== ''){
+    //     if(user?.email === 'customerservice@gmail.com') setProfile(customerServiceImage)
+    //     else{
+    //         setProfile(driverImage)
+    //     }
+    // }
+    
+
+    
     const signOut = () =>{
       setStatus({
         student:false,
@@ -67,7 +80,7 @@ function Navbar({sidebar, setSidebar, setShowPopup, setShowBox, setStatus, user}
 
             <div className='cursor-pointer'>
                 {
-                    user ? <img src={user?.photoURL } onClick={signOut} className='rounded-full cursor-pointer ml-2 h-10' alt="hi" />
+                    user ? <img src={user?.photoUrl} onClick={signOut} className='rounded-full cursor-pointer ml-2 h-10' alt='profile' />
                          : <BsFillPersonFill onClick={()=> navigate('/join')} color='white' className=' bg-gray-700 p-1 rounded-md' fontSize={26}/>
                 }
                 

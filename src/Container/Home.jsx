@@ -116,16 +116,7 @@ function Home() {
                   </>
                   
                 }
-                {/* {
-                  status.driver
-                  &&
-                  <div>
-                    
-                    <Routes>
-                    <Route path="/driver" element={<DriverPanel  />} />  
-                  </Routes>
-                  </div>
-                } */}
+                
                 {
                   (user?.email !== 'customerservice@gmail.com' && user?.email !== 'driver@gmail.com')
                   &&
@@ -138,52 +129,14 @@ function Home() {
                   
                   </>
                 }   
-                  
-                  
-                
-
-                {/* header */}
-                {/* {(param['*'] === '' || param['*'] === 'posts') && <div className='bg-gray-900  h-20 flex items-center  opacity-90 px-10'>
-                <h2 className='text-white text-xl  mb-2 font-semibold '>Home</h2>
-                
-                <div className='flex items-baseline flex-1 justify-center gap-10 text-white text-sm font-light'>
-                    <div 
-                    
-                    onClick={(e) => {
-                        setActiveBtn('deviations');
-                        navigate('/')
-                    }}
-                    className={`${activeBtn === 'deviations' && activeBtnStyles }`}>
-                        <p className='h-20  cursor-pointer flex items-center'>Deviations</p>
-                        
-                    </div>
-                    <div 
-                        
-                    onClick={(e) => {
-                        setActiveBtn('posts');
-                        navigate('/posts')
-                    }}
-                    className={`${activeBtn === 'posts' && activeBtnStyles }`}>
-                        <p className='h-20  cursor-pointer flex items-center'>Posts</p>    
-                    </div>
-                </div>
-                </div>} */}
-
-                {/* {param['*'] === 'categories' && <div className='bg-gray-900 w-full  h-20 flex items-center gap-64 opacity-90 px-10'>
-                <h2 className='text-white text-xl mb-2 font-semibold'>Category</h2>
-                </div>} */}
-
-                {/* <div>
-                <Routes>
-                    <Route path="/*" element={<Feed setShowPopup={setShowPopup}/>} />  
-                    <Route path="/categories" element={<Categories />} />  
-        
-                </Routes>
-                </div>      */}
 
             </div>
 
+            
+
         </div>
+
+        
         
           
     </div>

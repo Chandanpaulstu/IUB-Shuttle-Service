@@ -14,18 +14,26 @@ function Feedback({user}) {
         .orderBy('timestamp', 'asc' )
         .onSnapshot(snapshot => 
           (
-              setMessages(snapshot.docs.map(doc => {
-                if(user?.email === doc?.data()?.email) {
-                
-                  return (
-                    {
-                      id: doc.id,
-                      data: doc.data(),
-                    }
-                )
-                }
-              }))
+              setMessages(snapshot.docs.filter(doc => user?.email === doc?.data()?.email)
+                                        .map(doc => (
+                                          {
+                                            id: doc.id,
+                                            data: doc.data(),
+                                          }
+                                        ))
+                          )
           ))
+                // {
+                //   if(user?.email === doc?.data()?.email) {
+                //     return (
+                //       {
+                //         id: doc.id,
+                //         data: doc.data(),
+                //       }
+                //           )
+                //   } 
+                // }
+              
         
     },[user])
   return (
